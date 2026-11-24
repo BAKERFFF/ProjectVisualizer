@@ -67,3 +67,27 @@ h1 em { color: var(--brand); font-style: normal; }
 .detail-title { margin: 20px 0 5px; color: #eef4fd; font-size: 17px; line-height: 1.35; word-break: break-all; }.meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 22px; }.meta div { border: 1px solid var(--line); border-radius: 8px; background: #151f2d; padding: 11px; }.meta b, .meta span { display: block; }.meta b { color: #edf4ff; font: 17px "IBM Plex Mono", monospace; }.meta span { margin-top: 5px; color: var(--muted); font-size: 10px; }.detail-group { margin-top: 20px; }.group-title { display: flex; justify-content: space-between; margin-bottom: 9px; color: #9aa9bd; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }.group-title span { color: var(--brand); }.symbol { display: flex; align-items: center; gap: 8px; margin: 5px 0; border-radius: 6px; background: #14251d; padding: 7px 8px; color: #d5e5d7; font-size: 11px; }.symbol-kind { color: var(--green); }.symbol small { margin-left: auto; color: var(--muted); font-size: 9px; }.link-item { padding-left: 0; color: #9ab8ea; }.muted-copy { color: var(--muted); font-size: 11px; }.code { max-height: 350px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: #0a0f16; padding: 12px; color: #cbd7e6; white-space: pre-wrap; font: 11px/1.65 "IBM Plex Mono", Consolas, monospace; }.details-empty { padding-top: 34vh; }.detail-placeholder { display: block; margin-bottom: 16px; color: #4c617e; font-size: 32px; }.details-empty h2 { margin: 9px 0; font-size: 17px; }.details-empty p { color: var(--muted); font-size: 12px; line-height: 1.7; }
 @media (max-width: 980px) { .workspace { grid-template-columns: 230px minmax(0, 1fr); }.details { display: none; } }
 @media (max-width: 680px) { .topbar { padding: 0 15px; }.privacy-note { display: none; }.home { width: min(100% - 28px, 600px); padding-top: 48px; } h1 { font-size: 43px; }.import-actions { flex-wrap: wrap; }.url-field { flex-basis: 100%; }.or { width: 100%; text-align: center; }.local-btn { flex: 1; }.feature-row { grid-template-columns: 1fr; margin-top: 42px; }.workspace { grid-template-columns: 1fr; }.sidebar { display: none; } }
+
+.graph-breadcrumb { display: flex; align-items: center; gap: 7px; margin-top: 8px; color: #91a4c0; font-size: 11px; }
+.crumb-button { width: 22px; height: 22px; border: 1px solid #3b506e; border-radius: 6px; color: #a9c8f7; background: #182a43; font-size: 17px; line-height: 15px; }
+.crumb-button:disabled { opacity: .3; cursor: default; }
+.canvas-controls { display: flex; align-items: center; gap: 17px; }
+.zoom-hint { color: #5c6c83; font-size: 10px; }
+.project-graph { height: calc(100% - 90px) !important; min-height: 500px; cursor: grab; touch-action: none; }
+.project-graph.dragging { cursor: grabbing; }
+.graph-backdrop { pointer-events: none; }
+.graph-node { transform-box: fill-box; transform-origin: center; transition: filter .2s; }
+.graph-node:hover { filter: drop-shadow(0 0 12px rgba(121, 168, 255, .28)); }
+.graph-node rect { transition: fill .2s, stroke .2s, transform .2s; }
+.graph-folder rect { fill: url(#folder-fill); stroke: #5278a7; stroke-width: 1.4; }
+.graph-folder:hover rect { stroke: #9bbcff; }
+.graph-folder text { fill: #eef5ff; font-size: 13px; font-weight: 700; }
+.graph-folder .node-meta { fill: #9db1ce; font-size: 10px; font-weight: 400; }
+.graph-file rect { fill: url(#file-fill); stroke: #415671; }
+.graph-file:hover rect, .graph-file.active rect { fill: #203a59; stroke: #8eb7ff; stroke-width: 1.7; }
+.graph-file circle { fill: #6682a8; }.graph-file.active circle { fill: #9be49a; }
+.folder-pulse { fill: #9be49a; filter: drop-shadow(0 0 7px rgba(155, 228, 154, .8)); animation: folder-pulse 2.8s ease-in-out infinite; }
+.edge { fill: none; stroke: #6582ad; stroke-width: 1.2; opacity: .6; stroke-dasharray: 7 6; animation: edge-flow 13s linear infinite; }
+@keyframes folder-pulse { 0%,100% { opacity: .65; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
+@keyframes edge-flow { to { stroke-dashoffset: -130; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
